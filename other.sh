@@ -1,15 +1,18 @@
 # Run main installation
-kubectl apply -k argocd
+#kubectl apply -k argocd
 
-#Check if the argocd namespace has already been created
+#Generate an ssh-key (passwordless) and added as trusted in your repo
+ssh-keygen -t ed25519 -a 100
 
 #Create the sealed-secret with the credentials to create to Argo
 # Access to the repo
-./create_sealed_secret.sh argocd-repo-creds.unsealed.yaml
-mv argocd-repo-creds.unsealed.yaml sealed-argocd-repo-creds.yaml
-kubectl apply -f sealed-argocd-repo-creds.yaml
+./create_sealed_secret.sh private-repo-creds.unsealed.yaml
+mv sealed-private-repo-creds.unsealed.yaml private-repo-creds.yaml
+
 
 kubectl apply -k environments/development
+
+
 
 
 #openssl req -x509 -newkey rsa:4096 -days 365 -keyout ca-key.pem -out ca-cert.pem
@@ -18,3 +21,4 @@ kubectl apply -k environments/development
 #./create_sealed_secret.sh secret-tls-argocd-server-tls.yaml
 #kubectl create -n argocd secret tls argocd-repo-server-tls --cert=argocd-server-tls.pem --key=argocd-server-tls-key.pem -o yaml --dry-run=client > argocd-repo-server-tls.yaml
 #./create_sealed_secret.sh argocd-repo-server-tls.yaml
+#kubectl apply -f sealed-private-repo-creds.yaml

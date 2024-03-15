@@ -4,7 +4,8 @@ namespace: argocd
 resources:
 - namespace.yaml
 - https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-- ingress.yaml
+- private-repo-creds.yaml
+
 patches:
 - path: argo-cmd-params-cm.yaml
   target:

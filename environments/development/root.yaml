@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: "git@github.com:alejandropriv/stock-cluster.git"
     path: environments/development/
-    targetRevision: development
+    targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd

@@ -1,8 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: data-collector-service
+  name: data-collector-service-app
   namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
 
 spec:
   project: default
