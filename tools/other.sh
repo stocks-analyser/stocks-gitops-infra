@@ -1,6 +1,3 @@
-# Run main installation
-#kubectl apply -k argocd
-
 #Generate an ssh-key (passwordless) and added as trusted in your repo
 ssh-keygen -t ed25519 -a 100
 
@@ -9,7 +6,7 @@ ssh-keygen -t ed25519 -a 100
 ./create_sealed_secret.sh private-repo-creds.unsealed.yaml
 mv sealed-private-repo-creds.unsealed.yaml private-repo-creds.yaml
 
-
+# Main installation
 kubectl apply -k environments/development
 
 

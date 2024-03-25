@@ -1,11 +1,15 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
+- ../../applications/argocd # 2
+- ../../applications/data-collector-service #4
+- ../../applications/rabbitmq-service #3
+- ../../applications/sealed-secrets-service # 1
 - root.yaml
-- ../../applications/argocd
-- ../../applications/data-collector-service
-- ../../applications/rabbitmq-service
+
 
 patches:
 - path: data-collector-service/target-patch.yaml
 - path: rabbitmq-service/target-patch.yaml
+- path: sealed-secret-service/target-patch.yaml
+

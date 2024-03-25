@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sealed-secrets-service-app
+  namespace: argocd
+  metadata:
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:alejandropriv/stock-sealed-secrets.git
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: argocd
