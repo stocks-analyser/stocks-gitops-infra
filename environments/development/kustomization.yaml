@@ -11,5 +11,5 @@ resources:
 patches:
 - path: data-collector-service/target-patch.yaml
 - path: rabbitmq-service/target-patch.yaml
-- path: sealed-secret-service/target-patch.yaml
+- path: sealed-secrets-service/target-patch.yaml
 
