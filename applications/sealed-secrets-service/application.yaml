@@ -3,9 +3,6 @@ kind: Application
 metadata:
   name: sealed-secrets-service-app
   namespace: argocd
-  metadata:
-  annotations:
-    argocd.argoproj.io/hook: PreSync
     
   finalizers:
   - resources-finalizer.argocd.argoproj.io
