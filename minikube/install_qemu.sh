@@ -8,6 +8,8 @@
 echo 'export MINIKUBE_HOME=/Volumes/TOSHIBA01/projectskubernetes/.minikube' >> ~/.zprofile
 source ~/.zprofile
 
+sudo ln -s /volumes/TOSHIBA01/projectskubernetes/repos /opt/repos
+
 #https://devopscube.com/minikube-mac/
 brew install qemu
 brew install socket_vmnet
@@ -24,3 +26,8 @@ kubectl config use-context minik-nodes
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 chmod 700 get_helm.sh
 ./get_helm.sh
+
+# Install argocd
+
+${root}/installation.sh
+${root}/applications/kaniko

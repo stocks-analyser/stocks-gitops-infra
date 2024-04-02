@@ -3,7 +3,8 @@ kind: Application
 metadata:
   name: sealed-secrets-service-app
   namespace: argocd
-    
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"    
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: dockerfile
+  #labels:
+  #  type: local
+spec:
+  capacity:
+    storage: 15Gi
+  accessModes:
+    - ReadWriteMany
+  storageClassName: standard
+  nfs:
+    server: 192.168.105.1
+    path: /Users/alejandroprieto/repo/repos/stock-cluster/applications/kaniko/docker # replace this with the output of pwd command from before, if it is different
