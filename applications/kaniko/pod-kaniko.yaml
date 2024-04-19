@@ -10,19 +10,24 @@ spec:
   containers:
   - name: kaniko
     image: nginx:latest
-#    image: gcr.io/kaniko-project/executor:latest
-#    args: [
-
-#           "--dockerfile=Dockerfile",
-#           "--context=dir:///workspace/",
-#            "--no-push"] 
-
+    image: gcr.io/kaniko-project/executor:latest
+    args: [
+           "--dockerfile=Dockerfile",
+           "--context=dir:///dockerfiles",
+           "--destination=ghcr.io/alejandropriv/ubuntu:1.0.2"]
     volumeMounts:
       - name: dockerfile-storage
-        mountPath: /dockerfiles
+        mountPath: /dockerfiles/
+      - name: kaniko-secret
+        mountPath: /kaniko/.docker
   restartPolicy: Never
   volumes:
     - name: dockerfile-storage
       persistentVolumeClaim:
         claimName: dockerfile-claim
-        
+    - name: kaniko-secret
+      secret:
+        secretName: dockerconfigjson-github-com
+        items:
+          - key: .dockerconfigjson
+            path: config.json
