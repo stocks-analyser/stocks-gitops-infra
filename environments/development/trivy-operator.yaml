@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: trivy-operator-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: "git@github.com:alejandropriv/stock-cluster.git"
+    path: environments/development/trivy-operator
+    targetRevision: development
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: argocd

@@ -1,0 +1,4 @@
+resources:
+  - ../../../applications/trivy-operator
+patches:
+  - path: application.yaml

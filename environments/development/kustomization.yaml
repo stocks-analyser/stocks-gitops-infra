@@ -6,6 +6,7 @@ resources:
 - ../../applications/data-collector-service #4
 - ../../applications/rabbitmq-service #3
 - ../../applications/sealed-secrets-service # 1
+- trivy-operator.yaml
 
 patches:
 - path: data-collector-service/target-patch.yaml
