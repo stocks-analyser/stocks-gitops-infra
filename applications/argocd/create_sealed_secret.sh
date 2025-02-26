@@ -1,7 +1,6 @@
 #!/bin/bash
 
-
-check_context(){
+check_context() {
     # Check current kubectl context
     CURRENT_CONTEXT=$(kubectl config current-context)
     echo "Current kubectl context is: $CURRENT_CONTEXT"
@@ -37,7 +36,6 @@ check_context(){
     fi
 }
 
-
 get_metadata() {
     local file_path="$1"
     local request="$2"
@@ -45,7 +43,6 @@ get_metadata() {
     metadata=$(grep -E "^\s*$request:" "$file_path" | awk '{print $2}' | head -n 1)
 
     echo $metadata
-
 }
 
 # Function to check if the file is a SealedSecret
@@ -59,13 +56,11 @@ create_sealed_secret() {
     local file_path="$1"
     local file_path_dest="sealed-${file_path}"
 
+    echo "Creating a new SealedSecret from ${file_path}..."
 
     # Create a new SealedSecret with the provided key-value pairs
-    # TODO: ARE THESE ALL THE OPTIONS THAT WE NEED?
     kubeseal --scope strict --format yaml -f "${file_path}" -w "${file_path_dest}"
     echo "kubeseal executed - file ${file_path_dest} created."
-    
-
 }
 
 merge_sealed_secret() {
@@ -75,31 +70,27 @@ merge_sealed_secret() {
     local secret_name=$(get_metadata ${file_path} "name")
     local secret_namespace=$(get_metadata ${file_path} "namespace")
 
-
-
     if is_sealed_secret "$file_path"; then
+        echo "Merging secrets into ${file_path}..."
 
         # Replace commas with spaces and then split into an array
         IFS=' ' read -ra key_value_pairs <<< "${key_values//,/ }"
-
 
         for pair in "${key_value_pairs[@]}"; do
             IFS='=' read -r key value <<< "$pair"
             # Trim leading and trailing whitespaces
             key="${key%"${key##*[![:space:]]}"}"
             value="${value%"${value##*[![:space:]]}"}"
-            echo -n "${value}" | kubectl  -n "${secret_namespace}" create secret generic "${secret_name}" --dry-run=client --from-file="${key}"=/dev/stdin -o yaml | kubeseal --merge-into $file_path -o yaml
+            echo -n "${value}" | kubectl -n "${secret_namespace}" create secret generic "${secret_name}" --dry-run=client --from-file="${key}"=/dev/stdin -o yaml | kubeseal --merge-into $file_path -o yaml
         done
 
         cat $file_path
-        echo "${file_path}" updated
+        echo "${file_path} updated"
     else
         echo "Error: The specified file is not a SealedSecret."
         exit 1
     fi
-    
 }
-
 
 # Check if the correct number of arguments is provided
 if [ "$#" -lt 1 ]; then
@@ -117,8 +108,10 @@ check_context
 
 # Check if the file is a SealedSecret and perform the appropriate action
 if is_sealed_secret "$file_path"; then
+    echo "File is a SealedSecret. Proceeding to merge secrets..."
     merge_sealed_secret "$file_path" "${key_values[@]}"
 else
+    echo "File is not a SealedSecret. Proceeding to create a new SealedSecret..."
     create_sealed_secret "${file_path}"
 fi
 
