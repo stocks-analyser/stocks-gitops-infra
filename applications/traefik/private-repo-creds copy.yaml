@@ -1,0 +1,14 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: argocd-ingress
+  namespace: argocd  # Make sure this matches your ArgoCD namespace
+spec:
+  entryPoints:
+    - web  # Use "websecure" if you have TLS enabled
+  routes:
+    - match: Host(`192.168.0.10`)  # Replace with your K3s node's IP
+      kind: Rule
+      services:
+        - name: argocd-server
+          port: 80  # ArgoCD service port (default HTTP)
