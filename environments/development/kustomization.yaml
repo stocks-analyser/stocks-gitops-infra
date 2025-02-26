@@ -3,13 +3,11 @@ kind: Kustomization
 resources:
 - argocd.yaml
 - root.yaml
-- ../../applications/data-collector-service #4
-- ../../applications/rabbitmq-service #3
+# - ../../applications/data-collector-service #4
+# - ../../applications/rabbitmq-service #3
 - ../../applications/sealed-secrets-service # 1
-- trivy-operator.yaml
+- ../../applications/traefik # 2
 
 patches:
-- path: data-collector-service/target-patch.yaml
-- path: rabbitmq-service/target-patch.yaml
 - path: sealed-secrets-service/target-patch.yaml
 
