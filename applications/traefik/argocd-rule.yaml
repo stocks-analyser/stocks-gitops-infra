@@ -5,9 +5,9 @@ metadata:
   namespace: argocd  # Make sure this matches your ArgoCD namespace
 spec:
   entryPoints:
-    - web  # Use "websecure" if you have TLS enabled
+    - argocd  # ✅ Use the new entryPoint
   routes:
-    - match: Host(`192.168.0.10`)  && PathPrefix(`/argocd`) # Replace with your K3s node's IP
+    - match: PathPrefix(`/argocd`) # Replace with your K3s node's IP
       kind: Rule
       services:
         - name: argocd-server
