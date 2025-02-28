@@ -6,14 +6,17 @@ resources:
 - private-repo-creds.yaml
 - https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
+
+# helmCharts:
+#   - name: argo-cd
+#     version: stable  # Use a specific version or omit to get the latest
+#     releaseName: argocd
+#     namespace: argocd
+#     valuesFile: values.yaml  # Path to your custom values.yaml file
+
+
 patches:
   - path: argo-cmd-params-cm.yaml
     target:
       kind: ConfigMap
       name: argocd-cmd-params-cm
-
-  - path: argocd-server-service-patch.yaml  # Apply the patch for the service
-    target:
-      kind: Service
-      name: argocd-server
-      namespace: argocd

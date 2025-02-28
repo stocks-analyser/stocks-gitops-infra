@@ -1,0 +1,13 @@
+[
+  {
+    "op": "add",
+    "path": "/spec/ports/-",
+    "value": {
+      "name": "argocd",
+      "nodePort": 31000,
+      "port": 8085,
+      "protocol": "TCP",
+      "targetPort": 8085
+    }
+  }
+]

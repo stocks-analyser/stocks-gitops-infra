@@ -4,10 +4,11 @@ metadata:
   name: argocd-ingress
   namespace: argocd  # Make sure this matches your ArgoCD namespace
 spec:
+
   entryPoints:
     - argocd  # ✅ Use the new entryPoint
   routes:
-    - match: Host(`192.168.0.10`) # Replace with your K3s node's IP
+    - match: Host(`192.168.0.10`) && PathPrefix(`/`)
       kind: Rule
       services:
         - name: argocd-server

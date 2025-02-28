@@ -4,7 +4,7 @@ resources:
 - ../../../applications/argocd
 
 patches:
-- path: argocd-server-service-patch.yaml
+#- path: argocd-server-service-patch.yaml
 #- path: rabbitmq-service/target-patch.yaml
 #- path: sealed-secrets-service/target-patch.yaml
 
