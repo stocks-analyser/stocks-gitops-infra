@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - argocd  # ✅ Use the new entryPoint
   routes:
-    - match: PathPrefix(`/argocd`) # Replace with your K3s node's IP
+    - match: Host(`192.168.0.10`) # Replace with your K3s node's IP
       kind: Rule
       services:
         - name: argocd-server
