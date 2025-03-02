@@ -1,17 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: sealed-secrets-service-app
+  name: trivy-operator
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "1"    
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
-
 spec:
   project: default
   source:
-    repoURL: git@github.com:alejandropriv/stock-sealed-secrets.git
+    repoURL: https://bitnami-labs.github.io/sealed-secrets
+    chart: sealed-secrets/sealed-secrets
+    targetRevision: 2.17.1
+    helm:
+      releaseName: sealed-secrets
+
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: argocd
+    namespace: kube-system
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

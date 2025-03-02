@@ -7,7 +7,3 @@ resources:
 # - ../../applications/rabbitmq-service #3
 - ../../applications/sealed-secrets-service # 1
 - ../../applications/traefik # 2
-
-patches:
-- path: sealed-secrets-service/target-patch.yaml
-
