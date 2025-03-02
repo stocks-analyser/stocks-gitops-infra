@@ -11,6 +11,11 @@ Apply helm configure to traefik:
 
     sudo systemctl restart k3s
 
+Patch the loadbalancer:
+
+    kubectl patch service traefik -n kube-system --patch "$(cat traefik-service-patch.yaml)"
+    
+
 
 Reinstall parts of the k3s
 
@@ -36,6 +41,4 @@ Check if the ports are open
     kubectl apply -k /Users/alejandroprieto/projects/stock-cluster/environments/development
 
 
-Patch the loadbalancer:
 
-    kubectl patch service traefik -n kube-system --patch "$(cat traefik-service-patch.yaml)"
