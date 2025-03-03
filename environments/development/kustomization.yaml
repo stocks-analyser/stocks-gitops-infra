@@ -5,5 +5,5 @@ resources:
 - root.yaml
 # - ../../applications/data-collector-service #4
 # - ../../applications/rabbitmq-service #3
-- ../../applications/sealed-secrets-service # 1
+- ../../applications/sealed-secrets # 1
 - ../../applications/traefik # 2

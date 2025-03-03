@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: trivy-operator
+  name: sealed-secrets
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://bitnami-labs.github.io/sealed-secrets
-    chart: sealed-secrets/sealed-secrets
-    targetRevision: 2.17.1
+    chart: sealed-secrets
+    targetRevision: "*"
     helm:
       releaseName: sealed-secrets
 
