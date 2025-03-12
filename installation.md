@@ -14,9 +14,9 @@
 # ArgoCD
 ## Run the installation of ArgoCD
 
-    kubectl apply -k /Users/alejandroprieto/projects/gitops-infra/applications/argocd
+    kubectl apply -k /Users/alejandroprieto/projects/stocks-gitops-infra/applications/argocd
 
-    # kubectl apply -k /Users/alejandroprieto/projects/gitops-infra/environments/development
+    # kubectl apply -k /Users/alejandroprieto/projects/stocks-gitops-infra/environments/development
 
 ## Check the initial admin password
 
@@ -25,7 +25,7 @@
 ## For exposing argocd login - check the traefik configuration instructions
 #### install the traefik ingress route
 
-    kubectl apply -k /Users/alejandroprieto/projects/gitops-infra/applications/traefik 
+    kubectl apply -k /Users/alejandroprieto/projects/stocks-gitops-infra/applications/traefik 
     
 ### Port-forward
     # kubectl -n argocd port-forward deployment/argocd-server 8080:8080

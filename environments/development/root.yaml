@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: "git@github.com:stocks-analyser/stocks-data-sync.git"
+    repoURL: "https://github.com/stocks-analyser/stocks-gitops-infra"
     path: environments/development/
-    targetRevision: HEAD
+    targetRevision: dev
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
