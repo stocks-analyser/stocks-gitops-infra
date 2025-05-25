@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: data-collector-service-app
+  name: data-sync-app
   namespace: argocd
 spec:
   source:
