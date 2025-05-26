@@ -6,5 +6,5 @@ metadata:
 spec:
   source:
     targetRevision: dev
-    path: deploy/argocd/environment/development
+    path: deploy/argocd/environments/development
     

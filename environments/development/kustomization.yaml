@@ -9,3 +9,5 @@ resources:
 - ../../applications/sealed-secrets # 1
 - ../../applications/traefik # 2
 
+patches: 
+- patch: data-sync/target-patch.yaml
