@@ -11,7 +11,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: "git@github.com:alejandropriv/StockDataSync"
+    repoURL: "git@github.com:stocks-analyser/stocks-data-sync.git"
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: argocd

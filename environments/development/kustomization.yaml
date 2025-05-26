@@ -8,3 +8,4 @@ resources:
 - ../../applications/data-sync # 3
 - ../../applications/sealed-secrets # 1
 - ../../applications/traefik # 2
+
