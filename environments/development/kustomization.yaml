@@ -10,4 +10,4 @@ resources:
 - ../../applications/traefik # 2
 
 patches: 
-- patch: data-sync/target-patch.yaml
+- path: data-sync/target-patch.yaml
