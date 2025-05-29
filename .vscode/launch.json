@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    
+    
+    {
+      "type": "bashdb",                // Debugger-Typ
+      "request": "launch",             // Startmodus
+      "name": "Bash-Debug (current file)",
+      "program": "${file}",            // Skript, das du gerade offen hast
+      "cwd": "${workspaceFolder}",     // Arbeitsverzeichnis
+      "terminalKind": "integrated",     // Integriertes Terminal für stdin/stdout
+      "args": ["/Users/alejandroprieto/projects/stocks-gitops-infra/tools/local/sealed-secret.yaml","abc=123"],
+
+    }
+  ]
+}
