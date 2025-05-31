@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-db-config
+  namespace: postgres
+data:
+  primary.initdb.user: postgres
+  stocks_db_username: stocksdb_admin
+  stocks_db: stocksdb
+  primary.persistence.enabled: true
+  primary.initdb.user: postgres
+  

@@ -46,3 +46,6 @@
 # CI - Configuration
 ## Runner configuration
     https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/adding-self-hosted-runners
+
+    cd projects/actions-runner 
+    ./run.sh

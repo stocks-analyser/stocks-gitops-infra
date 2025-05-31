@@ -1,0 +1,53 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: postgres-db
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://charts.bitnami.com/bitnami
+    chart: postgresql
+    targetRevision: 15.5.0
+    helm:
+      releaseName: postgres-db
+      valuesFrom:
+        - name: auth.postgresPassword
+          valueFrom:
+            secretRef:
+              name: sealed-secret
+              key: postgresPassword
+        - name: auth.password
+          valueFrom:
+            secretRef:
+              name: sealed-secret
+              key: stocksDBPassword
+        - name: auth.username
+          valueFrom:
+            configMapKeyRef:
+              name: postgres-db-config
+              key: stocks_db_username
+        - name: auth.database
+          valueFrom:
+            configMapKeyRef:
+              name: postgres-db-config
+              key: stocks_db
+        - name: primary.persistence.enabled
+          valueFrom:
+            configMapKeyRef:
+              name: postgres-db-config
+              key: primary.persistence.enabled
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: postgres
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
