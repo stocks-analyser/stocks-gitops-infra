@@ -7,6 +7,5 @@ data:
   primary.initdb.user: postgres
   stocks_db_username: stocksdb_admin
   stocks_db: stocksdb
-  primary.persistence.enabled: true
-  primary.initdb.user: postgres
+  primary.persistence.enabled: "true"
   
