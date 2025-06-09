@@ -15,32 +15,7 @@ spec:
     targetRevision: 15.5.0
     helm:
       releaseName: postgres-db
-      valuesFrom:
-        - name: auth.postgresPassword
-          valueFrom:
-            secretRef:
-              name: sealed-secret
-              key: postgresPassword
-        - name: auth.password
-          valueFrom:
-            secretRef:
-              name: sealed-secret
-              key: stocksDBPassword
-        - name: auth.username
-          valueFrom:
-            configMapKeyRef:
-              name: postgres-db-config
-              key: stocks_db_username
-        - name: auth.database
-          valueFrom:
-            configMapKeyRef:
-              name: postgres-db-config
-              key: stocks_db
-        - name: primary.persistence.enabled
-          valueFrom:
-            configMapKeyRef:
-              name: postgres-db-config
-              key: primary.persistence.enabled
+
 
   destination:
     server: https://kubernetes.default.svc
