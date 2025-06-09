@@ -16,7 +16,7 @@ spec:
       releaseName: postgres-db
       valuesFrom:
         - configMapKeyRef:
-            name: postgres-values
+            name: postgres-db-config
             key: values.yaml
       
 
