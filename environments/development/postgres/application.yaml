@@ -8,4 +8,6 @@ spec:
     helm:
       valueFiles:
       - values.yaml
-
+      valuesFrom:
+      - kind: secret
+        name: postgres-values
