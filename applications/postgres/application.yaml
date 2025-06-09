@@ -17,7 +17,7 @@ spec:
       valuesFrom:
         - name: values.yaml
           secretKeyRef:
-            name: postgres-values
+            name: postgres-db-postgresql
             key: values.yaml
  
 
