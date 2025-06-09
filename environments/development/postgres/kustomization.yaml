@@ -4,3 +4,6 @@ resources:
   - postgres-db-config.yaml
   #- sealed-secret.yaml
   - ../../../applications/postgres
+
+patches: 
+- path: values/target-patch.yaml
