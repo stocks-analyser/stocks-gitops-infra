@@ -13,12 +13,12 @@ spec:
     chart: postgresql
     targetRevision: 15.5.0
     helm:
-      releaseName: postgres-db
+      # releaseName: postgres-db
       valuesFrom:
-        - name: values.yaml
-          secretKeyRef:
-            name: postgres-db-postgresql
-            key: values.yaml
+        - valueFrom:
+            secretRef:
+              name: postgres-db-postgresql
+              key: auth.postgresPassword
  
 
   destination:
