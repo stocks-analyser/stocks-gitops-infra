@@ -14,10 +14,21 @@ spec:
     targetRevision: 15.5.0
     helm:
       releaseName: postgres-db
-      valuesFrom:
-        - configMapKeyRef:
-            name: postgres-db-config
-            key: values.yaml
+      values: |
+        global:
+          postgresql:
+            postgresqlPassword: abc
+            postgresqlUsername: def
+            postgresqlDatabase: stcks
+        primary:
+          persistence:
+            enabled: true
+        primary:
+          initdb:
+            user: stocks-user
+        stocksDB:
+          username: user2
+          database: stocks-db
       
 
  
