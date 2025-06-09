@@ -7,6 +7,5 @@ spec:
   source:
     helm:
       valuesFromFiles:
-        - values.yaml
+      - values.yaml
 
-    

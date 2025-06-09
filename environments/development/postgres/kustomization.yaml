@@ -6,4 +6,4 @@ resources:
   - ../../../applications/postgres
 
 patches: 
-- path: values/target-patch.yaml
+- path: application.yaml
