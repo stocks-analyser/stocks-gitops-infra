@@ -1,0 +1,13 @@
+image.debug: true
+auth.username: app_user
+auth.database: app_db
+auth.existingSecret: postgres
+auth.enablePostgresUser: true
+auth.secretKeys.adminPasswordKey: password
+auth.secretKeys.userPasswordKey: APP_DB_PASSWORD
+primary.persistence.enabled: true
+primary.persistence.size: 10Gi
+primary.pgHbaConfiguration: |
+    host all all 0.0.0.0/0 trust
+    host all all 127.0.0.1/32 trust
+    local all all trust

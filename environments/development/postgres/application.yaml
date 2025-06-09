@@ -1,0 +1,12 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: postgres-db
+  namespace: argocd
+spec:
+  source:
+    helm:
+      valueFiles:
+        - values.yaml
+
+

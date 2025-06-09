@@ -3,8 +3,6 @@ kind: Application
 metadata:
   name: postgres-db
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "2"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -15,32 +13,39 @@ spec:
     targetRevision: 15.5.0
     helm:
       releaseName: postgres-db
-      valuesFrom:
-        - name: auth.postgresPassword
-          valueFrom:
-            secretRef:
-              name: sealed-secret
-              key: postgresPassword
-        - name: auth.password
-          valueFrom:
-            secretRef:
-              name: sealed-secret
-              key: stocksDBPassword
-        - name: auth.username
-          valueFrom:
-            configMapKeyRef:
-              name: postgres-db-config
-              key: stocks_db_username
-        - name: auth.database
-          valueFrom:
-            configMapKeyRef:
-              name: postgres-db-config
-              key: stocks_db
-        - name: primary.persistence.enabled
-          valueFrom:
-            configMapKeyRef:
-              name: postgres-db-config
-              key: primary.persistence.enabled
+      values: |
+        auth:
+          username: app_user
+          database: app_db
+          existingSecret: postgres
+          secretKeys:
+            adminPasswordKey: password
+            userPasswordKey: APP_DB_PASSWORD
+          enablePostgresUser: true
+        
+        primary:
+          persistence:
+            enabled: true
+            size: 8Gi
+          extraEnvVars:
+            - name: POSTGRESQL_PASSWORD_ENCRYPTION
+              value: scram-sha-256
+          # Optional but recommended
+          resources:
+            limits:
+              memory: 1Gi
+              cpu: 1000m
+            requests:
+              memory: 256Mi
+              cpu: 250m
+              
+          pgHbaConfiguration: |
+            host    all             all             0.0.0.0/0               scram-sha-256
+            host    all             all             ::/0                    scram-sha-256
+            local   all             all                                     scram-sha-256
+            host    all             all             127.0.0.1/32            scram-sha-256
+            host    all             all             ::1/128                 scram-sha-256
+
 
   destination:
     server: https://kubernetes.default.svc
