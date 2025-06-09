@@ -14,7 +14,7 @@ spec:
     chart: postgresql
     targetRevision: 15.5.0
     helm:
-      releaseName: postgres-db
+      # releaseName: postgres-db
       valuesFrom:
         - valueFrom:
             secretRef:
