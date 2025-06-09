@@ -6,19 +6,8 @@ metadata:
 spec:
   source:
     helm:
-      values: |
-        global:
-          postgresql:
-            postgresqlPassword: abc
-            postgresqlUsername: def
-            postgresqlDatabase: stcks
-        primary:
-          persistence:
-            enabled: true
-        primary:
-          initdb:
-            user: stocks-user
-        stocksDB:
-          username: user2
-          database: stocks-db
+      valuesFrom:
+        - configMapKeyRef:
+            name: postgres-db-config
+            key: values.yaml
     
