@@ -10,4 +10,4 @@ spec:
       - values.yaml
       valuesFrom:
       - kind: secret
-        name: postgres-values
+        name: postgres-db-postgresql
