@@ -6,8 +6,7 @@ metadata:
 spec:
   source:
     helm:
-      valuesFrom:
-        - configMapKeyRef:
-            name: postgres-db-config
-            key: values.yaml
+      valuesFromFiles:
+        - values.yaml
+
     
