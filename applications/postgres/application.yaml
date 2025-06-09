@@ -16,11 +16,10 @@ spec:
     helm:
       releaseName: postgres-db
       valuesFrom:
-        - name: auth.postgresPassword
-          valueFrom:
+        - valueFrom:
             secretRef:
               name: sealed-secret
-              key: postgres-db
+              key: auth.postgresPassword
  
 
   destination:
