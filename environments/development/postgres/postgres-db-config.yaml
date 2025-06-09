@@ -3,6 +3,8 @@ kind: ConfigMap
 metadata:
   name: postgres-db-config
   namespace: postgres
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
 data:
   primary.initdb.user: postgres
   stocks_db_username: stocksdb_admin
