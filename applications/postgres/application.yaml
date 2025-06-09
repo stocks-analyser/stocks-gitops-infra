@@ -15,8 +15,9 @@ spec:
     helm:
       releaseName: postgres-db
       valuesFrom:
-        - kind: ConfigMap
-          name: postgres-db-config
+        - configMapKeyRef:
+            name: postgres-values
+            key: values.yaml
       
 
  
