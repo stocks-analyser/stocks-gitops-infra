@@ -13,23 +13,12 @@ spec:
     chart: postgresql
     targetRevision: 15.5.0
     helm:
-      # releaseName: postgres-db
-      values: |
-        global:
-          postgresql:
-            auth:
-              postgresPassword: abc
-        primary:
-          initdb:
-            user: postgres
-            password: bcd
-            extraUsers:
-              - name: stocksdb_admin
-                password: cde
-                database: stocksdb
-          persistence:
-            enabled: true
-            size: 8Gi
+      releaseName: postgres-db
+      valuesFrom:
+        - name: values.yaml
+          secretKeyRef:
+            name: postgres-values
+            key: values.yaml
  
 
   destination:
