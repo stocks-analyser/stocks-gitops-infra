@@ -1,4 +1,4 @@
 auth:
-  enablePostgresUser: true
-  auth.postgresPassword: abc
+  enablePostgresUser: "true"
+  auth.existingSecret: postgres-db-postgresql
     
