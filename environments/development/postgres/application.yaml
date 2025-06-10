@@ -6,5 +6,8 @@ metadata:
 spec:
   source:
     helm:
-      valueFiles:
-      - values.yaml
+      values: |
+        auth:
+          enablePostgresUser: "true"
+          postgresPassword: "abc"
+
