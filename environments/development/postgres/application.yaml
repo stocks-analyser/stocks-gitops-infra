@@ -8,6 +8,6 @@ spec:
     helm:
       values: |
         auth:
-          enablePostgresUser: "true"
+          enablePostgresUser: true
           postgresPassword: "abc"
 
