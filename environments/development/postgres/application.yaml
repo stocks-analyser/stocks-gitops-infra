@@ -9,5 +9,6 @@ spec:
       values: |
         auth:
           enablePostgresUser: true
-          postgresPassword: "abc"
+          postgresPassword: abc
+          existingSecret: postgres-db-postgresql
 
