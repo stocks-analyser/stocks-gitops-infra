@@ -11,4 +11,6 @@ spec:
           enablePostgresUser: true
           postgresPassword: abc
           existingSecret: postgres
+          username: test
+          
 
