@@ -1,15 +1,4 @@
-global:
-  postgresql:
-    postgresqlPassword: abc
-    postgresqlUsername: def
-    postgresqlDatabase: stcks
-primary:
-  persistence:
-    enabled: true
-primary:
-  initdb:
-    user: stocks-user
-stocksDB:
-  username: user2
-  database: stocks-db
+auth:
+  enablePostgresUser: true
+  auth.postgresPassword: abc
     
