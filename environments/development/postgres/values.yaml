@@ -2,7 +2,7 @@ auth:
   enablePostgresUser: true
   existingSecret: postgres-db-postgresql
   secretKeys:
-    adminPasswordKey: POSTGRES_PASSWORD
+    adminPasswordKey: postgres-password
     userPasswordKey: APP_DB_PASSWORD
 
 primary:
@@ -10,7 +10,7 @@ primary:
     persistence:
       enabled: true
       size: 8Gi
-      
+
   pgHbaConfiguration: |
     host all all 0.0.0.0/0 md5
     local all all trust
