@@ -11,6 +11,9 @@ spec:
           postgresql:
             auth:
               existingSecret: postgres
+              secretKeys:
+                adminPasswordKey: postgres-password  # Key in the secret for admin password
+                userPasswordKey: user-password       # Key in the secret for user password
               username: test
               database: test
 
