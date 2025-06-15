@@ -7,9 +7,11 @@ spec:
   source:
     helm:
       values: |
-        auth:
-          existingSecret: postgres
-          username: test
-          database: test
-          
+        global:
+          postgresql:
+            auth:
+              existingSecret: postgres
+              username: test
+              database: test
+
 
