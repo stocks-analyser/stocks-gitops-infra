@@ -6,7 +6,38 @@ metadata:
 spec:
   source:
     helm:
-      valueFiles:
-        - values.yaml
+      values: |
+        auth:
+          username: app_user
+          database: app_db
+          existingSecret: postgres
+          secretKeys:
+            adminPasswordKey: password
+            userPasswordKey: APP_DB_PASSWORD
+          enablePostgresUser: true
+        
+        primary:
+          persistence:
+            enabled: true
+            size: 8Gi
+          extraEnvVars:
+            - name: POSTGRESQL_PASSWORD_ENCRYPTION
+              value: scram-sha-256
+          # Optional but recommended
+          resources:
+            limits:
+              memory: 1Gi
+              cpu: 1000m
+            requests:
+              memory: 256Mi
+              cpu: 250m
+              
+          pgHbaConfiguration: |
+            host    all             all             0.0.0.0/0               scram-sha-256
+            host    all             all             ::/0                    scram-sha-256
+            local   all             all                                     scram-sha-256
+            host    all             all             127.0.0.1/32            scram-sha-256
+            host    all             all             ::1/128                 scram-sha-256
+
 
 
