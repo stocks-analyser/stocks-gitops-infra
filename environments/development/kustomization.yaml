@@ -4,11 +4,11 @@ resources:
 - argocd.yaml
 - root.yaml
 # - ../../applications/data-collector-service #4
-# - ../../applications/rabbitmq-service #3
 - ../../applications/data-sync # 3
 - ../../applications/sealed-secrets # 1
 - ../../applications/traefik # 2
-- postgres.yaml # 1
+- postgres.yaml # 4
+- rabbitmq-operator.yaml # 5
 
 
 patches: 

@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Use the official RabbitMQ Cluster Operator manifest as a remote resource.
+# Consider pinning to a specific release for reproducibility, e.g. replace
+# `releases/latest` with `releases/download/vX.Y.Z`.
+resources:
+  - https://github.com/rabbitmq/cluster-operator/releases/download/v2.16.0/cluster-operator.yml
+  
+namespace: rabbitmq-system
+
+# Optionally, you can add overlays here to customize the operator deployment,
+# such as imagePullSecrets, DEFAULT_RABBITMQ_IMAGE defaults, etc.
+
+
+
