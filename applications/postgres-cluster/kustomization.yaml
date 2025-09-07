@@ -4,3 +4,4 @@ namespace: pgdb
 resources:
   - application.yaml
   - namespace.yaml
+  - cluster.yaml

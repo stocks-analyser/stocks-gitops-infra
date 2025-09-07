@@ -4,4 +4,3 @@ namespace: pgdb
 resources:
   - ../../../applications/postgres-cluster
   - sealed-secret.yaml
-  - cluster.yaml
