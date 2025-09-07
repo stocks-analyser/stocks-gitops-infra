@@ -9,7 +9,17 @@ spec:
     repoURL: "https://github.com/stocks-analyser/stocks-gitops-infra"
     path: environments/development/postgres-operator
     targetRevision: dev
+    kustomize:
+      commonAnnotations:
+        managed-by: argocd
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd
-    
+    namespace: cnpg-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+      - ServerSideApply=true   # <<--- important
