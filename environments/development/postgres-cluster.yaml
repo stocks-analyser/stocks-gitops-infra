@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: "https://github.com/stocks-analyser/stocks-gitops-infra"
-    path: environments/development/postgres-operator
+    path: environments/development/postgres-cluster
     targetRevision: dev
     kustomize:
       commonAnnotations:
