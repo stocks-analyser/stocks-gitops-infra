@@ -11,6 +11,3 @@ namespace: rabbitmq-system
 
 # Optionally, you can add overlays here to customize the operator deployment,
 # such as imagePullSecrets, DEFAULT_RABBITMQ_IMAGE defaults, etc.
-
-
-
