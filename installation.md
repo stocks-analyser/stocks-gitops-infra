@@ -30,6 +30,19 @@
 ### Port-forward
     # kubectl -n argocd port-forward deployment/argocd-server 8080:8080
 
+## PgAdmin
+### Install-cnpg-plugin 
+    curl -sSfL \                  
+      https://github.com/cloudnative-pg/cloudnative-pg/raw/main/hack/install-cnpg-plugin.sh | \
+      sudo sh -s -- -b /usr/local/bin
+
+### Install pgadmin
+    kubectl cnpg pgadmin4 --mode desktop cluster-dev -n pgdb
+
+#### To remove pgadmin:
+    kubectl cnpg -n pgdb pgadmin4 cluster-dev --dry-run | kubectl delete -f -
+  
+
 ## Remove ArgoCD
 
     kubectl delete -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
@@ -49,3 +62,5 @@
 
     cd projects/actions-runner 
     ./run.sh
+
+
