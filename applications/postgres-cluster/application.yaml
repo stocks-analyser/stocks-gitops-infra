@@ -1,22 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: rabbitmq-operator-app
+  name: postgres-cluster
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: "https://github.com/stocks-analyser/stocks-gitops-infra"
-    path: environments/development/rabbitmq-operator
-    targetRevision: dev
   destination:
-    server: https://kubernetes.default.svc
+    server: 'https://kubernetes.default.svc'
     namespace: argocd
   syncPolicy:
     automated:
-      prune: false
+      prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-      - ApplyOutOfSyncOnly=true
-      - ServerSideApply=true  
+      - ServerSideApply=true
+      

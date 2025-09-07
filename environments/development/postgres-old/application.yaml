@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: postgres-db
+  name: postgres-cluster
   namespace: argocd
 spec:
   source:
