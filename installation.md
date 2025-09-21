@@ -62,5 +62,3 @@
 
     cd projects/actions-runner 
     ./run.sh
-
-
