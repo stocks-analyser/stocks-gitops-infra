@@ -1,0 +1,25 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
+metadata:
+  name: rabbitmq-dev
+  namespace: rabbitmq-cluster
+spec:
+  replicas: 3                              # Use odd number of replicas for quorum. :contentReference[oaicite:0]{index=0}
+
+  persistence:
+    # If you don’t have a default StorageClass in your cluster, specify storageClassName
+    storageClassName: standard             # adjust to your cluster’s StorageClass name
+    storage: 10Gi                          # amount of disk per node :contentReference[oaicite:1]{index=1}
+
+  service:
+    type: ClusterIP                       # other options: NodePort, LoadBalancer :contentReference[oaicite:2]{index=2}
+
+  resources:
+    requests:
+      cpu: 500m
+      memory: 1Gi
+    limits:
+      cpu: 500m
+      memory: 1Gi
+
+

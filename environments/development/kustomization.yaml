@@ -10,6 +10,7 @@ resources:
 - postgres-operator.yaml
 - postgres-cluster.yaml
 - rabbitmq-operator.yaml
+- rabbitmq-cluster.yaml
 
 
 patches: 
