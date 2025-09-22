@@ -8,7 +8,6 @@ spec:
 
   persistence:
     # If you don’t have a default StorageClass in your cluster, specify storageClassName
-    storageClassName: standard             # adjust to your cluster’s StorageClass name
     storage: 10Gi                          # amount of disk per node :contentReference[oaicite:1]{index=1}
 
   service:
