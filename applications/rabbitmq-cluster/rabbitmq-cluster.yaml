@@ -9,7 +9,8 @@ spec:
   persistence:
     # If you don’t have a default StorageClass in your cluster, specify storageClassName
     storage: 10Gi                          # amount of disk per node :contentReference[oaicite:1]{index=1}
-
+    storageClassName: local-path
+    
   service:
     type: ClusterIP                       # other options: NodePort, LoadBalancer :contentReference[oaicite:2]{index=2}
 
