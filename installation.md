@@ -60,5 +60,41 @@
 ## Runner configuration
     https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/adding-self-hosted-runners
 
-    cd projects/actions-runner 
-    ./run.sh
+## Install runner - secure
+
+    sudo useradd -m -d /opt/actions-runner -s /bin/bash actions
+
+    sudo passwd -l actions  # lock password (no direct login)
+
+    sudo chown -R actions:actions /opt/actions-runner
+
+
+Follow the instructions in the github UI
+
+## Install as a service
+
+    sudo ./svc.sh install
+
+    sudo ./svc.sh start
+
+
+### If you get an errror
+
+    svr01 runsvc.sh[44586]:    at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize)
+
+
+    sudo systemctl edit actions.runner.*
+verify:
+
+    User=actions
+
+    sudo systemctl daemon-reload
+
+    sudo systemctl restart actions.runner.stocks-analyser.svr01.service
+
+
+    systemctl status actions.runner.stocks-analyser.svr01.service
+
+### Install docker
+
+https://docs.docker.com/engine/install/ubuntu/
